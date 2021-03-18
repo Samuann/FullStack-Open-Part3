@@ -4,6 +4,8 @@
 # or for Mac users keyboard shortcut ⌘KM . When language is changed to HTTP.
 # Click 'Send Request' link displayed in file to run desired request.
 # Postman can also be used. But advantages of this is: easily shared with the dev team
+
+###
 GET http://localhost:3001/api/info
 
 ###

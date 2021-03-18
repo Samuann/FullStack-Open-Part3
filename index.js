@@ -33,7 +33,7 @@ const generateRandomPersonsID = () => {
     // Generate a random ID that does not exist in the current phonebook
     do {
         random = Math.floor(Math.random() * 10) + 1;
-    } while(existingPersonsID .includes(random));
+    } while(existingPersonsID.includes(random));
 
     return random
 }

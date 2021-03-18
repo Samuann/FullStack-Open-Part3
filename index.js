@@ -28,12 +28,12 @@ let phonebook = [
 
 const generateRandomPersonsID = () => {
     let random;
-    const p = phonebook.map(p => p.id);
+    const existingPersonsID = phonebook.map(p => p.id);
     
     // Generate a random ID that does not exist in the current phonebook
     do {
         random = Math.floor(Math.random() * 10) + 1;
-    } while(p.includes(random));
+    } while(existingPersonsID .includes(random));
 
     return random
 }

@@ -1,0 +1,25 @@
+# File for VSCode REST Client plug-in for locally testing http verb requests and url
+# Download REST Client for Visual Studio Code extension to use file for test
+# Select HTTP as language in Language Mode by clicking the language indicator at the bottom right of the status bar
+# or for Mac users keyboard shortcut ⌘KM . When language is changed to HTTP.
+# Click 'Send Request' link displayed in file to run desired request.
+# Postman can also be used. But advantages of this is: easily shared with the dev team
+GET http://localhost:3001/api/info
+
+###
+GET http://localhost:3001/api/persons
+
+###
+GET http://localhost:3001/api/persons/1
+
+###
+POST http://localhost:3001/api/persons
+content-type: application/json
+
+{
+    "name": "AH",
+    "number": "01-23232323"
+}
+
+###
+DELETE http://localhost:3001/api/persons/2

@@ -50,16 +50,15 @@ app.get('/api/info', (request, response) => {
 });
 
 app.get('/api/persons/:id', (request, response) => {
-    const id= Number(request.params.id);
-
-    const personId = phonebook.find(person => person.id === id);
+    const { id } = request.params
+    const personId = phonebook.find(person => person.id === Number(id));
 
     return personId ? response.json(personId) : response.status(404).end();
 });
 
 app.delete('/api/persons/:id', (request, response) => {
-    const id= Number(request.params.id);
-    phonebook = phonebook.filter(person => person.id !== id);
+    const { id }= request.params;
+    phonebook = phonebook.filter(person => person.id !== Number(id));
     response.status(204).end()
 });
 

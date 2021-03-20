@@ -28,7 +28,7 @@ let phonebook = [
 
 const generateRandomPersonsID = () => {
     let random;
-    const existingPersonsID = phonebook.map(p => p.id);
+    const existingPersonsID = phonebook.map(person => person.id);
     
     // Generate a random ID that does not exist in the current phonebook
     do {

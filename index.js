@@ -1,7 +1,26 @@
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 
+// Usually will not log the body of a request as it is not safe , but doing this for exercise purposes
+morgan.token('data', (request) => {
+    return request.method === 'POST' ? JSON.stringify(request.body) : null;
+});
+
+// Middleware set-up
 app.use(express.json());
+app.use(morgan('tiny'));
+app.use(morgan((token, request, response) => {
+    return [
+        token.method(request, response),
+        token.url(request, response),
+        token.status(request, response),
+        token.res(request, response, 'content-length'), '-',
+        token['response-time'](request, response), 'ms',
+        token.data(request, response)
+    ].join(' ')
+}))
+
 
 let phonebook = [
     {

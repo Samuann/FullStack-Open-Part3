@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const app = express();
 
 // Usually will not log the body of a request as it is not safe , but doing this for exercise purposes
@@ -9,6 +10,7 @@ morgan.token('data', (request) => {
 
 // Middleware set-up
 app.use(express.json());
+app.use(cors());
 app.use(morgan('tiny'));
 app.use(morgan((token, request, response) => {
     return [
@@ -19,7 +21,7 @@ app.use(morgan((token, request, response) => {
         token['response-time'](request, response), 'ms',
         token.data(request, response)
     ].join(' ')
-}))
+}));
 
 
 let phonebook = [
@@ -108,12 +110,12 @@ app.post('/api/persons', (request, response) => {
         name: body.name,
         number: body.number
     }
-
+    
     phonebook = phonebook.concat(newPerson);
     response.json(newPerson);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`)
